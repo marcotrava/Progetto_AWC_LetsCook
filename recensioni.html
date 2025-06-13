@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lascia la tua recensione - LET'S COOK</title>
+    <link rel="icon" href="./img/titolo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="style/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="./img/logo.png" alt="Logo">
+        LET'S COOK
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="favoriti.html">Ricettario</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="username-display">Profilo</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="profile.html">Gestione Profilo</a></li>
+              <li><a class="dropdown-item" href="favoriti.html">Piatti preferiti</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="reviews.html">Le tue recensioni</a></li>
+            </ul>
+          </li>
+        </ul>
+       
+        <div id="auth-buttons"></div>
+        
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h1 class="welcome-message">
+                Ciao <span id="username-display3"></span>, lascia una recensione per:
+            </h1>
+            <h2 id="recipe-name" class="mb-4"></h2>
+            
+            <img id="recipe-image" class="img-fluid rounded mb-3" alt="Immagine Ricetta" style="max-height: 300px; object-fit: cover;">
+            <p id="recipe-instructions" class="text-muted"></p>
+            <h5 class="mt-4" style="color: darkblue; font-weight: bold; text-decoration: underline;">INGREDIENTI:</h5>
+            <ul id="recipe-ingredients" class="list-unstyled"></ul>
+        </div>
+        <div class="col-md-6">
+
+            <form id="review-form" onsubmit="saveReview(event)">
+                <div class="mb-3">
+                    <label for="review-date" class="form-label">Data di preparazione:</label>
+                    <input type="date" id="review-date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Difficoltà:</label>
+                    <div class="icon-rating" id="difficulty-rating">
+                        <i class="chef-icon bi bi-egg-fried" data-value="1"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="2"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="3"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="4"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="review-difficulty" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gusto:</label>
+                    <div class="icon-rating" id="taste-rating">
+                        <i class="chef-icon bi bi-egg-fried" data-value="1"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="2"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="3"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="4"></i>
+                        <i class="chef-icon bi bi-egg-fried" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="review-taste" required>
+                </div>
+                <div class="mb-3">
+                    <label for="private-note" class="form-label">Nota privata:</label>
+                    <textarea id="private-note" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Salva Recensione</button>
+            </form>
+        </div>
+    </div>
+  </main>
+
+  <footer class="footer mt-5">
+    <div class="footer-text">
+        <h6 class="mb-0">© 2024 LET'S COOK</h6>
+        <h6 class="mb-0">Marco Travaglianti</h6>
+    </div>
+    <div class="contact-info">
+        <h5>Contattaci</h5>
+        <ul class="list-unstyled">
+            <li><a href="mailto:info@letscook.com" class="footer-link">info@letscook.com</a></li>
+            <li><a href="tel:+390950207" class="footer-link">+390950207</a></li>
+        </ul>
+    </div>
+  </footer>
+
+  <script src="script/script.js"></script>
+  <script src="script/updatenavbar.js"></script>
+  <script src="script/recensione.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
